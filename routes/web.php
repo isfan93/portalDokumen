@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/regulasiPT/peraturan/{id}','detailPeraturan')->name('regulasi.detailper');
 
         // email
-        Route::get('/kirimemail','email');
+        // Route::get('/kirimemail','email');
     });
 
     Route::controller(NotifController::class)->group(function(){
