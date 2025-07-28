@@ -13,7 +13,7 @@
                   <div class="card-header">
                       <div class="row">
                           <div class="col-sm-12">
-                              <h2>Master Data Supplier</h2>
+                              <h2>Master User</h2>
                           </div>
                       </div>
                   </div>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-sm-6">
                 <div class="card-header">
-                  <form action="{{ route('regulasi.sk') }}" method="get">
+                  <form action="#" method="get">
                     <div class="row">
                       <div class="col-sm-10">
                         <input name="search" type="search" class="form-control form-control-sm" placeholder="Masukan Judul ...">
@@ -50,31 +50,40 @@
               <div class="table-responsive">
                 <table id="tablesk" class="table">
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>Tgl Upload</th>
+                    <th>Nama User</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Level</th>
                     <th>#</th>
                   </tr>
-                  @foreach ($sk as $data)
+                  {{-- @foreach ($kebijakan as $data) --}}
+                  @forelse ($users as $user)
                   <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $data->judul }}</td>
-                    <td>{{ $data->deskripsi }}</td>
-                    <td>{{ $data->tgl_upload }}</td>
-                    <td>
+                      <td>{{ $user->id }}</td>
+                      <td>{{ $user->name }}</td>
+                      <td>{{ $user->username }}</td>
+                      <td>{{ $user->email }}</td>
+                      <td>{{ $user->password }}</td>
+                      <td>{{ $user->role }}</td>
+                      <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                          <a href="{{ route('regulasi.detailsk', $data->id) }}" class="btn btn-info" title="detail"><i class="ph ph-clipboard"></i></a>
+                          <a href="#" class="btn btn-info" title="detail"><i class="ph ph-clipboard"></i></a>
                             {{-- <button type="button" class="btn btn-info">Detail</button> --}}
-                          <a class="btn btn-danger delete" data-id="{{ $data->id }}" data-nama="{{ $data->judul }}" title="hapus"><i class="ph ph-trash" style="color: white"></i></a>
+                          <a class="btn btn-danger delete" data-id="1" data-nama="1" title="hapus"><i class="ph ph-trash" style="color: white"></i></a>
                           </div>
                     </td>
-                    {{-- <td width='5%' align='center'><a href='#' class='btn btn-sm btn-primary bg-primary' title='lihat detail'> <i class="feather icon-clipboard float-start"></i></a></td>
-                    <td width='5%' align='center'><a href='#' class='btn btn-sm btn-primary bg-danger' title='hapus data'> <i class="feather icon-clipboard float-start"></i></a></td> --}}
-                  </tr>
-                  @endforeach
+                </tr>
+                  @empty
+                      <tr>
+                        <td colspan=6 class="text-center fw-bold">Tidak ada data</td>
+                      </tr>
+                  @endforelse
+                  
+                  {{-- @endforeach --}}
                 </table>
                 <div class="px-5">
-                  {{ $sk->links() }}
+                  {{-- {{ $kebijakan->links() }} --}}
                 </div>
               </div>
             </div>
@@ -92,21 +101,36 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('regulasi.tambahsk') }}" method="post" enctype="multipart/form-data"   >
+              <form action="#" method="post" enctype="multipart/form-data"   >
                 @csrf
                 <div class="col-sm">
-                  <label for="">Judul</label>
-                  <input class="form-control form-control-sm" type="text" name="judul" id="" placeholder="Masukan Judul Dokumen ...">
+                  <label for="">Nama</label>
+                  <input class="form-control form-control-sm" type="text" name="judul" id="" placeholder="Masukan Nama ...">
                 </div>
                 <br>
                 <div class="col-sm">
-                  <label for="">Deskripsi</label>
-                  <textarea class="form-control form-control-sm" name="deskripsi" id="" cols="30" rows="10" placeholder="Masukan deskripsi ..."></textarea>
+                    <label for="">Username</label>
+                    <input class="form-control form-control-sm" type="text" name="judul" id="" placeholder="Masukan Username ...">
                 </div>
                 <br>
                 <div class="col-sm">
-                  <input class="form-control form-control-sm" type="file" name="files" id="">
+                    <label for="">Email</label>
+                    <input class="form-control form-control-sm" type="email" name="judul" id="" placeholder="Masukan Email ...">
                 </div>
+                <br>
+                <div class="col-sm">
+                    <label for="">Password</label>
+                    <input class="form-control form-control-sm" type="password" name="judul" id="" placeholder="Masukan Password ...">
+                </div>
+                <br>
+                <div class="col-sm">
+                    <label for="">Role</label>
+                    <select name="" id="" class="form-control form-control-sm">
+                        <option value="">Admin</option>
+                        <option value="">User</option>
+                    </select>
+                </div>
+                <br>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -135,7 +159,7 @@
         })
         .then((willDelete) => {
         if (willDelete) {
-            window.location = "/regulasiPT/hapus/"+id+""
+            window.location = "/regulasiPT/hapus/kb/"+id+""
             swal("Data Berhasil dihapus ", {
             icon: "success",
             });

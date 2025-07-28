@@ -13,7 +13,7 @@
                   <div class="card-header">
                       <div class="row">
                           <div class="col-sm-12">
-                              <h2>DAFTAR KEBIJAKAN</h2>
+                              <h2>Master Data Barang</h2>
                           </div>
                       </div>
                   </div>

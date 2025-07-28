@@ -13,7 +13,7 @@
                   <div class="card-header">
                       <div class="row">
                           <div class="col-sm-12">
-                              <h2>Master Data Supplier</h2>
+                              <h2>Master Data Barang</h2>
                           </div>
                       </div>
                   </div>
@@ -32,7 +32,7 @@
               </div>
               <div class="col-sm-6">
                 <div class="card-header">
-                  <form action="{{ route('regulasi.sk') }}" method="get">
+                  <form action="#" method="get">
                     <div class="row">
                       <div class="col-sm-10">
                         <input name="search" type="search" class="form-control form-control-sm" placeholder="Masukan Judul ...">
@@ -50,31 +50,36 @@
               <div class="table-responsive">
                 <table id="tablesk" class="table">
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Deskripsi</th>
-                    <th>Tgl Upload</th>
+                    <th>Nama Supplier</th>
+                    <th>Alamat</th>
+                    <th>No Telfon</th>
                     <th>#</th>
                   </tr>
-                  @foreach ($sk as $data)
+                  {{-- @foreach ($kebijakan as $data) --}}
+                  @forelse ($suppliers as $supplier)
                   <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $data->judul }}</td>
-                    <td>{{ $data->deskripsi }}</td>
-                    <td>{{ $data->tgl_upload }}</td>
-                    <td>
+                      <td>{{ $supplier->id }}</td>
+                      <td>{{ $supplier->nama }}</td>
+                      <td>{{ $supplier->alamat }}</td>
+                      <td>{{ $supplier->no_telf }}</td>
+                      <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                          <a href="{{ route('regulasi.detailsk', $data->id) }}" class="btn btn-info" title="detail"><i class="ph ph-clipboard"></i></a>
+                          <a href="#" class="btn btn-info" title="detail"><i class="ph ph-clipboard"></i></a>
                             {{-- <button type="button" class="btn btn-info">Detail</button> --}}
-                          <a class="btn btn-danger delete" data-id="{{ $data->id }}" data-nama="{{ $data->judul }}" title="hapus"><i class="ph ph-trash" style="color: white"></i></a>
+                          <a class="btn btn-danger delete" data-id="1" data-nama="1" title="hapus"><i class="ph ph-trash" style="color: white"></i></a>
                           </div>
                     </td>
-                    {{-- <td width='5%' align='center'><a href='#' class='btn btn-sm btn-primary bg-primary' title='lihat detail'> <i class="feather icon-clipboard float-start"></i></a></td>
-                    <td width='5%' align='center'><a href='#' class='btn btn-sm btn-primary bg-danger' title='hapus data'> <i class="feather icon-clipboard float-start"></i></a></td> --}}
-                  </tr>
-                  @endforeach
+                </tr>
+                  @empty
+                      <tr>
+                        <td colspan=6 class="text-center fw-bold">Tidak ada data</td>
+                      </tr>
+                  @endforelse
+                  
+                  {{-- @endforeach --}}
                 </table>
                 <div class="px-5">
-                  {{ $sk->links() }}
+                  {{-- {{ $kebijakan->links() }} --}}
                 </div>
               </div>
             </div>
@@ -92,20 +97,21 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="{{ route('regulasi.tambahsk') }}" method="post" enctype="multipart/form-data"   >
+              <form action="#" method="post" enctype="multipart/form-data"   >
                 @csrf
                 <div class="col-sm">
-                  <label for="">Judul</label>
+                  <label for="">Nama Supplier</label>
                   <input class="form-control form-control-sm" type="text" name="judul" id="" placeholder="Masukan Judul Dokumen ...">
                 </div>
                 <br>
                 <div class="col-sm">
-                  <label for="">Deskripsi</label>
+                  <label for="">Alamat</label>
                   <textarea class="form-control form-control-sm" name="deskripsi" id="" cols="30" rows="10" placeholder="Masukan deskripsi ..."></textarea>
                 </div>
                 <br>
                 <div class="col-sm">
-                  <input class="form-control form-control-sm" type="file" name="files" id="">
+                  <label for="">No telepon</label>
+                  <input class="form-control form-control-sm" type="text" name="judul" id="" placeholder="Masukan Judul Dokumen ...">
                 </div>
             </div>
             <div class="modal-footer">
@@ -135,7 +141,7 @@
         })
         .then((willDelete) => {
         if (willDelete) {
-            window.location = "/regulasiPT/hapus/"+id+""
+            window.location = "/regulasiPT/hapus/kb/"+id+""
             swal("Data Berhasil dihapus ", {
             icon: "success",
             });

@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-  <title>Login | Vaka App </title>
+  <title>Login | Admin </title>
   <!-- [Meta] -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -13,7 +13,7 @@
   <meta name="author" content="codedthemes">
 
   <!-- [Favicon] icon -->
-<link rel="icon" href="../assets/images/vaka-logo.png" type="image/x-icon"> <!-- [Google Font : Poppins] icon -->
+<link rel="icon" href="../assets/images/logogorden-2.png" type="image/x-icon"> <!-- [Google Font : Poppins] icon -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- [Tabler Icons] https://tablericons.com -->
@@ -48,8 +48,8 @@
         <div class="card my-5">
           <div class="card-body">
             <div class="text-center">
-              <img src="../assets/images/text-logo.png" alt="images" class="img-fluid mb-4" style="width: 50%; height: 50%;">
-              <h4 class="f-w-500 mb-4">Login</h4>
+              <img src="../assets/images/fitri-gorden-logo.png" alt="images" class="img-fluid mb-4" style="width: 80%; height: 50%;">
+              {{-- <h4 class="f-w-500 mb-4">Login</h4> --}}
               {{-- <p class="mb-4">Don't have an Account? <a href="../pages/register-v1.html" class="link-primary ms-1">Create Account</a></p> --}}
             </div>
             <form action="{{ route('login.proses') }}" method="post">

@@ -1,8 +1,8 @@
     <div class="m-header">
       <a href="{{ route('dashboard.index') }}" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
-        {{-- <h5 class="text-white">New APS</h5> --}}
-        <img src="\assets/images/text-logo.png" alt="logo image" style="height: 50%; width: 50%" class="my-8 logo-lg">
+        {{-- <h5 class="text-white">Gorden Admin</h5> --}}
+        <img src="../assets/images/fitri-gorden-logo.png" alt="logo image" style="height: 70%; width: 70%" class="my-8 logo-lg">
       </a>
     </div>
     <div class="header-wrapper"> <!-- [Mobile Media Block] start -->

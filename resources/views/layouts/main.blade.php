@@ -54,7 +54,7 @@
 </div>
 <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
 {{-- [ Header] start --}}
-<div class="pc-header">
+<div class="pc-header" style="">
     @include('layouts.header')
 </div>
 <!-- [ Header ] end -->
